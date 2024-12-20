@@ -1,0 +1,23 @@
+@{
+    ViewBag.Title = "Daily Report";
+}
+
+<h2>Daily Report for @ViewBag.ReportDate.ToShortDateString()</h2>
+
+<p>Total Consultations: @ViewBag.TotalConsultations</p>
+<p>Total Fees: @ViewBag.TotalFees</p>
+
+<h3>Age Groups</h3>
+<table class="table">
+    <tr>
+        <th>Age Group</th>
+        <th>Count</th>
+    </tr>
+    @foreach (var group in ViewBag.AgeGroups)
+    {
+        <tr>
+            <td>@group.AgeGroup</td>
+            <td>@group.Count</td>
+        </tr>
+    }
+</table>

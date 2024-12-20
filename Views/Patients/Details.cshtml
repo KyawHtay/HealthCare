@@ -1,0 +1,39 @@
+﻿@model HealthCare.Models.Patient
+
+@{
+    ViewData["Title"] = "Patient Details";
+}
+
+<h2>Patient Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4>@Model.FirstName @Model.LastName</h4>
+        <p><strong>Gender:</strong> @Model.Gender</p>
+        <p><strong>Date of Birth:</strong> @Model.DOB.ToShortDateString()</p>
+        <p><strong>Address:</strong> @Model.AddressLine1 @Model.AddressLine2, @Model.City, @Model.PostCode</p>
+        <p><strong>Created Date:</strong> @Model.CreatedDate</p>
+        @if (Model.ModifiedDate.HasValue)
+        {
+            <p><strong>Modified Date:</strong> @Model.ModifiedDate.Value</p>
+        }
+
+        <!-- If you have related consultations, you can list them here -->
+        @if (Model.Consultations != null && Model.Consultations.Any())
+        {
+            <h5>Consultations:</h5>
+            <ul>
+                @foreach (var consultation in Model.Consultations)
+                {
+                    <li>
+                        Date: @consultation.ConsultationDateTime.ToShortDateString()
+                        - Symptoms: @consultation.PresentingSymptoms
+                        - Fee: @consultation.FeeCharged
+                    </li>
+                }
+            </ul>
+        }
+
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

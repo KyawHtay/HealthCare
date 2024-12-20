@@ -1,0 +1,17 @@
+         +-------------------+
+         |     Pharmacist    |
+         +---------+---------+
+                   |
+                   | Use System
+                   v
+      +-----------------------------+
+      |   Health Care Service ABC   |
+      +---------------+-------------+
+                      |
+                      +----> [Manage Patients (CRUD)]
+                      |
+                      +----> [Manage Consultations (CRUD)]
+                      |
+                      +----> [Print Consultation & Invoice]
+                      |
+                      +----> [Generate Summary Reports]
